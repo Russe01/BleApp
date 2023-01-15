@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   esense_flutter: ^0.6.2
   vector_math: ^2.1.2
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:

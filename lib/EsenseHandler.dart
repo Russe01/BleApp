@@ -1,7 +1,11 @@
 
 
 
+import 'dart:io';
+
 import 'package:esense_flutter/esense.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 
 class EsenseHandler {
   ESenseManager? eSenseManager;
@@ -27,6 +31,14 @@ class EsenseHandler {
   Future<void> connect() async {
     if (eSenseManager == null) {
       return;
+    }
+    if (Platform.isAndroid) {
+      if (!(await Permission.bluetooth.request().isGranted)) {
+        return;
+      }
+      if (!(await Permission.locationWhenInUse.request().isGranted)) {
+        return;
+      }
     }
     await eSenseManager!.disconnect();
     await eSenseManager!.connect();
