@@ -18,6 +18,12 @@ class TiltWidgetState extends State<TiltWidget> {
   double rotateAngle = 0;
 
   @override
+  void initState() {
+    rotateAngle = 0;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -29,9 +35,9 @@ class TiltWidgetState extends State<TiltWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: Colors.cyan,
@@ -54,7 +60,7 @@ class TiltWidgetState extends State<TiltWidget> {
                     rotateAngle += 10;
                   }
                   return Padding(
-                      padding: EdgeInsets.all(70),
+                      padding: const EdgeInsets.all(70),
                       child: Transform.rotate(
                         angle: convert.radians(rotateAngle),
                         child: Image.asset("assets/images/flutter-logo.jpg")
@@ -62,9 +68,9 @@ class TiltWidgetState extends State<TiltWidget> {
                   );
                 } else {
                   return Padding(
-                      padding: EdgeInsets.all(70),
+                      padding: const EdgeInsets.all(70),
                       child: Transform.rotate(
-                        angle: convert.radians(-45),
+                        angle: convert.radians(rotateAngle),
                         child: Image.asset("assets/images/flutter-logo.jpg")
                       )
                   );
@@ -75,6 +81,7 @@ class TiltWidgetState extends State<TiltWidget> {
         )
       ),
       backgroundColor: Colors.greenAccent,
+
     );
   }
 
